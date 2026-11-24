@@ -4,6 +4,10 @@ A .NET 10 Worker Service that runs a conversion once at startup, logs the result
 and stops. It uses BackgroundService and the .NET generic host. It is a console
 host; Windows Service installation is not configured.
 
+This was only created to test https://bugs.documentfoundation.org/show_bug.cgi?id=157815
+to see if a .NET Worker Service can reliably run a LibreOffice conversion in the background and wait for completion. 
+It is not intended to be a production-ready solution.
+
 ## Run
 
 Install the .NET 10 SDK and LibreOffice, then run from this directory:
@@ -22,7 +26,7 @@ the same name. --headless runs LibreOffice without showing its UI.
 
 Edit the Conversion section of appsettings.json, or override values on the command line:
 
-    dotnet run -- --Conversion:InputFile="D:/tdf/tmp/Example.docx" --Conversion:OutputDirectory="D:/tdf/tmp/Files_Output"
+    dotnet run --Conversion:InputFile="D:/tdf/tmp/Example.docx" --Conversion:OutputDirectory="D:/tdf/tmp/Files_Output"
 
 Both the supplied ODT example and Word documents such as DOCX can be used.
 TimeoutSeconds defaults to 120. Ctrl+C cancels the conversion and terminates the
